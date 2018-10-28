@@ -1,6 +1,6 @@
 # ipv6-kanjicon
 
-It's an alpha proof of concept implementation of ipv6 visual fingerprinting using japanese hieroglyphics.
+It's an alpha proof of concept implementation of ipv6 visual fingerprinting using japanese characters.
 
 For the sake of simplicity the result is in a html file.
 
