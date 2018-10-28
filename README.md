@@ -11,3 +11,7 @@ For example, kanjicon for 5a2a:b57e:1b38:4bfe:b9da:bdab:e3b2:67f4
 TODO:
 • Not for random ip, but CLI
 • Making actual image, not a html file
+
+
+PS
+Thanks for https://github.com/scriptin/kanji-frequency for list of kanji
