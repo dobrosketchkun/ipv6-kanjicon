@@ -12,22 +12,20 @@ def rand_ipv6():
 	return str(ipaddress.IPv6Address(random.randint(0, 2**128-1)))
 
 ipv6 = rand_ipv6()
+#print(ipv6)
 ip6_p = ipv6.split(':')
 
 kanji1 = divmod((int(ip6_p[0],16) + int(ip6_p[1],16) + int(ip6_p[2],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),j_len)[1] 
 kanji2 = divmod((int(ip6_p[1],16) + int(ip6_p[2],16) + int(ip6_p[3],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),j_len)[1]  
 kanji3 = divmod((int(ip6_p[2],16) + int(ip6_p[3],16) + int(ip6_p[4],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),j_len)[1]  
 kanji4 = divmod((int(ip6_p[3],16) + int(ip6_p[4],16) + int(ip6_p[5],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),j_len)[1]  
-
-#print(ipv6)
 #print (kanji1, kanji2, kanji3, kanji4)
 
 
-kanji1_color = divmod((int(ip6_p[0],16) + int(ip6_p[1],16) + int(ip6_p[2],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),int('ffffff',16))[1] 
-kanji2_color = divmod((int(ip6_p[1],16) + int(ip6_p[2],16) + int(ip6_p[3],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),int('ffffff',16))[1] 
-kanji3_color = divmod((int(ip6_p[2],16) + int(ip6_p[3],16) + int(ip6_p[4],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),int('ffffff',16))[1] 
-kanji4_color = divmod((int(ip6_p[3],16) + int(ip6_p[4],16) + int(ip6_p[5],16) + int(ip6_p[6],16) + int(ip6_p[7],16)),int('ffffff',16))[1] 
-
+kanji1_color = divmod(((int(ip6_p[0],16) + int(ip6_p[1],16) + int(ip6_p[2],16)) * (int(ip6_p[6],16) + int(ip6_p[7],16))),int('ffffff',16))[1] 
+kanji2_color = divmod(((int(ip6_p[1],16) + int(ip6_p[2],16) + int(ip6_p[3],16)) * (int(ip6_p[6],16) + int(ip6_p[7],16))),int('ffffff',16))[1] 
+kanji3_color = divmod(((int(ip6_p[2],16) + int(ip6_p[3],16) + int(ip6_p[4],16)) * (int(ip6_p[6],16) + int(ip6_p[7],16))),int('ffffff',16))[1] 
+kanji4_color = divmod(((int(ip6_p[3],16) + int(ip6_p[4],16) + int(ip6_p[5],16)) * (int(ip6_p[6],16) + int(ip6_p[7],16))),int('ffffff',16))[1] 
 #print (kanji1_color, kanji2_color, kanji3_color, kanji4_color)
 
 
@@ -38,8 +36,8 @@ p {
   }
 w1 {
   font-size: 160px;
-  color: #''' + dec2hex(kanji1_color) + dec2hex(kanji2_color)[0] + ';' + '''
-  background-color:#''' + dec2hex(kanji2_color)[0]  +  dec2hex(kanji1_color) + ';' +'''
+  color: #''' + dec2hex(kanji1_color) + dec2hex(kanji2_color)[0:2] + ';' + '''
+  background-color:#''' + dec2hex(kanji2_color)[0:2]  +  dec2hex(kanji1_color)[6::-1] + ';' +'''
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   font-weight: 900;
@@ -47,8 +45,8 @@ w1 {
 ''' + '''
 w2 {
   font-size: 160px;
-  color: #''' + dec2hex(kanji2_color) + dec2hex(kanji3_color)[0] + ';' + '''
-  background-color:#''' + dec2hex(kanji3_color)[0] + dec2hex(kanji2_color) + ';' + '''
+  color: #''' + dec2hex(kanji2_color) + dec2hex(kanji3_color)[0:2] + ';' + '''
+  background-color:#''' + dec2hex(kanji3_color)[0:2] + dec2hex(kanji2_color) + ';' + '''
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   font-weight: 900;
@@ -56,8 +54,8 @@ w2 {
 ''' + '''
 w3 {
   font-size: 160px;
-  color: #''' + dec2hex(kanji3_color) + dec2hex(kanji4_color)[0] + ';' + '''
-  background-color:#'''+ dec2hex(kanji4_color)[0] + dec2hex(kanji3_color) + ';' +'''
+  color: #''' + dec2hex(kanji3_color) + dec2hex(kanji4_color)[0:2] + ';' + '''
+  background-color:#'''+ dec2hex(kanji4_color)[0:2] + dec2hex(kanji3_color) + ';' +'''
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   font-weight: 900;
@@ -65,8 +63,8 @@ w3 {
 ''' + '''
 w4 {
   font-size: 160px;
-  color: #''' + dec2hex(kanji4_color) + dec2hex(kanji1_color)[0] + ';' + '''
-  background-color:#'''+ dec2hex(kanji1_color)[0] + dec2hex(kanji4_color) + ';' +'''
+  color: #''' + dec2hex(kanji4_color) + dec2hex(kanji1_color)[0:2] + ';' + '''
+  background-color:#'''+ dec2hex(kanji1_color)[0:2] + dec2hex(kanji4_color) + ';' +'''
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   font-weight: 900;
